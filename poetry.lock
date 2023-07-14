@@ -489,13 +489,13 @@ files = [
 
 [[package]]
 name = "image-analyst"
-version = "0.1.0"
+version = "0.1.1"
 description = "ImageAnalyst is a library that simplifies image analysis."
 optional = false
 python-versions = ">=3.9,<4.0"
 files = [
-    {file = "image_analyst-0.1.0-py3-none-any.whl", hash = "sha256:43df2679238a0445e7681677764b5b45319ea9b946bdd97a547a54f67d111346"},
-    {file = "image_analyst-0.1.0.tar.gz", hash = "sha256:b827ef9b2c565ebb9e4556acb0f013546385a1d0076f628f1384f553beafd1c6"},
+    {file = "image_analyst-0.1.1-py3-none-any.whl", hash = "sha256:85d0535914afddf8558a4c6c9c862a545ae270def6d97861fbdd73e6d92642c0"},
+    {file = "image_analyst-0.1.1.tar.gz", hash = "sha256:3c1e4a7bad6f2b0d774587f6139aa42f5434c4c5f2d287763e5ca00dcff5d492"},
 ]
 
 [package.dependencies]
@@ -1295,4 +1295,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9, <3.12"
-content-hash = "dc9868bf3ce9e1d2ef39263f3fb40036f1e88ef23f95fbdb98689a6f9b121469"
+content-hash = "d37194019e9362f75e4b657006de0a746ae070099f6bde52ed3a2c8ff1c60609"
