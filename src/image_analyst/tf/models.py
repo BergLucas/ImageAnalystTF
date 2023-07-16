@@ -9,7 +9,6 @@ from image_analyst.exceptions import (
 from image_analyst.image import (
     ImageFormat,
     BoundingBox,
-    verify_image,
     ImageEmbedder,
     EmbeddingFunction,
 )
@@ -199,8 +198,6 @@ class YoloV7Tflite(ODModel):
         return ImageFormat.RGB
 
     def __call__(self, image: np.ndarray) -> list[Detection]:  # noqa: D102
-        verify_image(image)
-
         if image.dtype != self.supported_dtype:
             raise InvalidDtypeException("The image dtype is not supported.")
 
@@ -313,8 +310,6 @@ class YoloV7Tf(ODModel):
         return ImageFormat.RGB
 
     def __call__(self, image: np.ndarray) -> list[Detection]:  # noqa: D102
-        verify_image(image)
-
         if image.dtype != self.supported_dtype:
             raise InvalidDtypeException("The image dtype is not supported.")
 
