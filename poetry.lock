@@ -488,17 +488,23 @@ files = [
 
 [[package]]
 name = "image-analyst"
-version = "0.1.1"
+version = "0.1.2"
 description = "ImageAnalyst is a library that simplifies image analysis."
 optional = false
 python-versions = ">=3.9,<4.0"
 files = [
-    {file = "image_analyst-0.1.1-py3-none-any.whl", hash = "sha256:85d0535914afddf8558a4c6c9c862a545ae270def6d97861fbdd73e6d92642c0"},
-    {file = "image_analyst-0.1.1.tar.gz", hash = "sha256:3c1e4a7bad6f2b0d774587f6139aa42f5434c4c5f2d287763e5ca00dcff5d492"},
+    {file = "image_analyst-0.1.2-py3-none-any.whl", hash = "sha256:6ed6ff443d8cd41763badb24a3760fb35e3e7ca14ae5ff4ccb9fae1d60556ca2"},
+    {file = "image_analyst-0.1.2.tar.gz", hash = "sha256:be1ed1cdab76a7e01a1e9c43c3e286e0bc6d97dacbef6214498d50d95b008ea4"},
 ]
 
 [package.dependencies]
 numpy = ">=1.24.3,<2.0.0"
+
+[package.extras]
+cv2 = ["image-analyst-cv2[cv2] (>=0.1.0,<0.2.0)"]
+hf = ["image-analyst-hf (>=0.1.0,<0.2.0)"]
+onnx = ["image-analyst-onnx (>=0.1.0,<0.2.0)"]
+tf = ["image-analyst-tf (>=0.1.1,<0.2.0)"]
 
 [[package]]
 name = "importlib-metadata"
@@ -1307,4 +1313,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9, <3.12"
-content-hash = "6eef224b8cd84146a400333af41112bebb0b4aa15795d01d48be294b20933326"
+content-hash = "88a5a23f6da139adb0bf915a664e81c9ae77d02708aa0698797f704a2b82069b"
