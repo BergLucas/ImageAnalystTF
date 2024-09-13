@@ -55,12 +55,12 @@ class YoloV7Tflite(ODModel):
         """
         try:
             model_path = download_file(
-                "https://github.com/BergLucas/ImageAnalystTF/releases/download/v0.2.0/tf-yolov7-coco.tflite",  # noqa: E501
+                "https://github.com/BergLucas/ImageAnalystTF-models/releases/download/v1.0.0/tf-yolov7-coco.tflite",  # noqa: E501
                 "tf-yolov7-coco.tflite",
                 report_callback,
             )
             labels_path = download_file(
-                "https://github.com/BergLucas/ImageAnalystTF/releases/download/v0.2.0/tf-yolov7-coco.names",  # noqa: E501
+                "https://github.com/BergLucas/ImageAnalystTF-models/releases/download/v1.0.0/tf-yolov7-coco.names",  # noqa: E501
                 "tf-yolov7-coco.names",
                 report_callback,
             )
@@ -112,12 +112,12 @@ class YoloV7Tflite(ODModel):
         """
         try:
             model_path = download_file(
-                "https://github.com/BergLucas/ImageAnalystTF/releases/download/v0.2.0/tf-yolov7-tiny-coco.tflite",  # noqa: E501
+                "https://github.com/BergLucas/ImageAnalystTF-models/releases/download/v1.0.0/tf-yolov7-tiny-coco.tflite",  # noqa: E501
                 "tf-yolov7-tiny-coco.tflite",
                 report_callback,
             )
             labels_path = download_file(
-                "https://github.com/BergLucas/ImageAnalystTF/releases/download/v0.2.0/tf-yolov7-tiny-coco.names",  # noqa: E501
+                "https://github.com/BergLucas/ImageAnalystTF-models/releases/download/v1.0.0/tf-yolov7-tiny-coco.names",  # noqa: E501
                 "tf-yolov7-tiny-coco.names",
                 report_callback,
             )
