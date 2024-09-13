@@ -1,24 +1,25 @@
 from __future__ import annotations
-from image_analyst.exceptions import DownloadFailedException
-from image_analyst.utils import download_file, ReportFunction
+
+import logging
+from typing import Optional
+
+import numpy as np
+import tensorflow as tf
+
 from image_analyst.exceptions import (
-    ModelLoadingFailedException,
-    InvalidDtypeException,
     DetectionFailedException,
+    DownloadFailedException,
+    InvalidDtypeException,
+    ModelLoadingFailedException,
 )
 from image_analyst.image import (
-    ImageFormat,
     BoundingBox,
-    ImageEmbedder,
     EmbeddingFunction,
+    ImageEmbedder,
+    ImageFormat,
 )
-from image_analyst.utils import NmsFunction, NmsPython
-from image_analyst.models import ODModel, Detection
-from typing import Optional
-import tensorflow as tf
-import numpy as np
-import logging
-
+from image_analyst.models import Detection, ODModel
+from image_analyst.utils import NmsFunction, NmsPython, ReportFunction, download_file
 
 logger = logging.getLogger(__name__)
 
@@ -169,14 +170,18 @@ class YoloV7Tflite(ODModel):
         try:
             with open(labels_path, "rt") as f:
                 self.__supported_classes = tuple(f.read().splitlines())
-        except OSError:
-            raise ModelLoadingFailedException("Cannot load the supported classes.")
+        except OSError as error:
+            raise ModelLoadingFailedException(
+                "Cannot load the supported classes."
+            ) from error
 
         try:
             self.__interpreter = tf.lite.Interpreter(model_path=model_path)
             self.__interpreter.allocate_tensors()
-        except ValueError:
-            raise ModelLoadingFailedException("Cannot load the YoloV7 model.")
+        except ValueError as error:
+            raise ModelLoadingFailedException(
+                "Cannot load the YoloV7 model."
+            ) from error
 
         self.__score_threshold = score_threshold
         self.__input_details = self.__interpreter.get_input_details()
@@ -284,13 +289,17 @@ class YoloV7Tf(ODModel):
         try:
             with open(labels_path, "rt") as f:
                 self.__supported_classes = tuple(f.read().splitlines())
-        except OSError:
-            raise ModelLoadingFailedException("Cannot load the supported classes.")
+        except OSError as error:
+            raise ModelLoadingFailedException(
+                "Cannot load the supported classes."
+            ) from error
 
         try:
             self.__infer = tf.saved_model.load(model_path).signatures["serving_default"]
-        except ValueError:
-            raise ModelLoadingFailedException("Cannot load the YoloV7 model.")
+        except ValueError as error:
+            raise ModelLoadingFailedException(
+                "Cannot load the YoloV7 model."
+            ) from error
 
         self.__score_threshold = score_threshold
         self.__model_size = model_size

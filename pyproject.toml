@@ -9,7 +9,7 @@ readme = "README.md"
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License"
+    "License :: OSI Approved :: MIT License",
 ]
 packages = [{ include = "image_analyst", from = "src" }]
 
@@ -24,20 +24,48 @@ tensorflow-io-gcs-filesystem = "^0.29, !=0.32.0"
 black = "^23.3.0"
 mypy = "^1.4.1"
 coverage = "^7.2.7"
-flake8 = "^6.0.0"
-flake8-docstrings = "^1.7.0"
+ruff = "^0.6.4"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.poe.tasks]
+test = "python -m unittest -v"
+coverage = "coverage run -m unittest -v"
+coverage-report = ["coverage", { cmd = "coverage report" }]
+coverage-html = ["coverage", { cmd = "coverage html" }]
+mypy = "mypy src"
+black = "black src"
+ruff = "ruff check src"
+ruff-fix = "ruff check --fix src"
+ruff-ufix = "ruff check --fix --unsafe-fixes src"
+lint = ["black", "ruff", "mypy"]
+
 [tool.coverage.run]
 relative_files = true
 branch = true
-source = [
-    "src/image_analyst/tf",
-    "tests"
+source = ["src/image_analyst/tf", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "D",   # pydocstyle
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "N",   # pep8-naming
+    "I",   # isort
+    "C",   # flake8-comprehensions
+    "B",   # flake8-bugbear
+    "TCH", # flake8-type-checking
+    "Q",   # flake8-quotes
+    "PL",  # pylint
 ]
+
+ignore = ["E203", "D100", "D101", "D104", "D105", "D106", "N818", "PLR0913"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
 
 [tool.mypy]
 ignore_missing_imports = true
